@@ -1,0 +1,26 @@
+@import "./color";
+// BODY
+.basicbody {
+    width: 100vw;
+    height: 100vh;
+    font-family: 'courierprime';
+    font-size: 18px;
+    color: map-get($color,"white");
+    background-color:map-get($color,"black");
+    display:grid;
+}
+// HEADER
+.basichead {
+    grid-area: header;
+    background-color: map-get($color,"gray");
+}
+// MAIN
+.basicmain {
+    grid-area: main;
+    background-color: map-get($color,"black");
+}
+// FOOTER
+.basicfoot {
+    grid-area: footer;
+    background-color: map-get($color,"gray");
+}

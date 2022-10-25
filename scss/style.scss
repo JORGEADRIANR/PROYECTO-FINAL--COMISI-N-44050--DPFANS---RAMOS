@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: "courierprime";
+    src: url(../assets/fonts/courierprime/CourierPrime-Regular.ttf);
+}
+// Header/Footer e INDEX
+@import "./index";
+// Generalidades de Pages y ALBUMS
+@import "./pages&albums";
+// GALERY
+@import "./galery";
+// CONTACT e Info
+@import "./contact";
+// INFO
+@import "./info";

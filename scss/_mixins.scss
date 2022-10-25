@@ -1,0 +1,88 @@
+@import "./color";
+@mixin multicolor {
+    & :hover {
+        animation-name: anim_buttons;
+        animation-duration: .60s;
+        animation-iteration-count: infinite;
+    }
+}
+
+@mixin nhmulticolor {
+    animation-name: anim_buttons;
+    animation-duration: .60s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes anim_buttons {
+    0% {
+        background-color: blue;
+    }
+    25% {
+        background-color: blueviolet;
+    }
+    50% {
+        background-color: greenyellow;
+    }
+    75% {
+        background-color: orange;
+    }
+    100% {
+        background-color: aquamarine;
+    }
+}
+
+@mixin nomulticolor {
+    & :hover {
+        animation: none;
+        -webkit-animation: none;
+}
+}
+
+@mixin colorchange {
+    & :hover {
+        background-color: map-get($color, "darkaqua") ;
+    }
+}
+@mixin nocolor {
+    & :hover {
+        background-color: initial;
+    }
+}
+
+@mixin anim {
+    animation-name: anim_rotate;
+    animation-duration: .6s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    z-index: -1;
+}
+
+@keyframes anim_rotate {
+    0% {z-index: -1;
+        rotate: -10deg;
+    }
+
+    50% {z-index: -1;
+        rotate: 0deg;
+    }
+    
+
+    100%{z-index: -1;
+        rotate: 10deg;
+    }
+} 
+
+@mixin transform {
+    & :hover {
+        transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+        -moz-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        -o-transform: scale(1.1);
+        transition: transform .2s;
+        -webkit-transition: transform .2s;
+        -moz-transition: transform .2s;
+        -ms-transition: transform .2s;
+        -o-transition: transform .2s;
+}
+}

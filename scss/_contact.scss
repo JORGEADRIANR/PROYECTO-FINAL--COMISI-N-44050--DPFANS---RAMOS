@@ -1,0 +1,133 @@
+@import "./color";
+@import "./class";
+@import "./mixins";
+// BODY
+.pagegridCON {
+    @extend .basicbody;
+    height: 120vh !important;
+    grid-template-rows: .15fr 1fr 1fr .15fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas:"header header header header"
+                        "main main main main"
+                        "main main main main"
+                        "footer footer footer footer";
+    row-gap: .7em;
+    column-gap: .7em;
+}
+// HEADER ALTA RES
+.headeralta {
+    display: none;
+}
+// MAIN
+.contmain {
+    @extend .basicmain;
+    color: map-get($color,"white");
+    display: grid;
+    grid-template-rows: .10fr 1fr 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas:"titlec"
+                        "form"
+                        "twpersonal";
+    row-gap: .4em;
+    column-gap: .4em;
+}
+#contactitle {
+    grid-area: titlec;
+    background-color: map-get($color,"gray");
+    display: flex;
+    justify-content: center;
+    strong {
+        align-self: center;
+    }
+}
+#forml {
+    grid-area: form;
+    background-color: map-get($color,"gray");
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    #formposition {
+        background-color: map-get($color,"gray");
+        #fieldset {
+            border-style: dotted;
+            border-color: map-get($color,"darkaqua");
+            text-align: center;
+        }
+    }
+}
+#twpersonal {
+    grid-area: twpersonal;
+    background-color: map-get($color,"gray");
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    #fotocont {
+        max-width: 297px;
+        max-height: 339px;
+        opacity: 50%;
+        border: 2px solid map-get($color,"white");
+        align-self: center;
+    }
+    div{
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        a {
+            align-self: center;
+        }
+    }
+    #twpers {
+        @include anim;
+    }
+}
+
+// MEDIA QUERIES MOBILE FIRST
+
+@media screen and (min-width: 600px) {
+    .pagegridCON {
+        height: 150vh !important;
+    }
+    #fotocont {
+        max-width: 440px !important;
+        max-height: 503px !important;
+        opacity: 60% !important;
+    }
+}
+@media screen and (min-width: 768px) {
+    #fotocont {
+        max-width: 440px !important;
+        max-height: 503px !important;
+        opacity: 70% !important;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .pagegridCON {
+        height: 127vh !important;
+    }
+    .contmain {
+        grid-template-rows: .10fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:"titlec titlec"
+                            "form twpersonal"
+                            "form twpersonal";
+        row-gap: .4em;
+        column-gap: .4em;
+    }
+    #fotocont {
+        margin-bottom: 15px;
+    }
+    #forml {
+        #formposition {
+            #fieldset {
+                display: grid;
+                height: 17em;
+                border-style: none;
+            }
+        }
+    }
+}
+@media screen and (min-width: 1280px) {
+    .pagegridCON{
+        height: 112vh !important;
+    }
+}

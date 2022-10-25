@@ -1,0 +1,135 @@
+@import "./color";
+@import "./class";
+// BODY
+.pagegridGAL {
+    @extend .basicbody;
+    height: 160vh !important;
+    grid-template-rows: .15fr 1fr 1fr .15fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas:"header header header header"
+                        "main main main main"
+                        "main main main main"
+                        "footer footer footer footer";
+    row-gap: .7em;
+    column-gap: .7em;
+}
+// HEADER ALTA RES
+.headeralta {
+    display: none;
+}
+// MAIN
+.galmain {
+    @extend .basicmain;
+    display: grid;
+    grid-template-rows: .2fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:"titleg titleg"
+                        "img img"
+                        "vid vid";
+    row-gap: .4em;
+    column-gap: .4em;
+}
+.galtitle {
+    grid-area: titleg;
+    background-color: map-get($color,"gray");
+    display: flex;
+    justify-content: center;
+    strong {
+        align-self: center;
+    }
+}
+.galimg {
+    grid-area: img;
+    background-color: map-get($color,"gray");
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.galvid {
+    grid-area: vid;
+    background-color: map-get($color,"gray");
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+#imgguy {
+    max-width: 318px;
+    max-height: 212px;
+    border: 2px dotted map-get($color,"white");
+    align-self: center;
+}
+#imgduo {
+    max-width: 319px;
+    max-height: 206px;
+    border: 2px dotted map-get($color,"white");
+    align-self: center;
+}
+#vid2 {
+    display: none;
+}
+// MEDIA QUERIES MOBILE FIRST
+
+@media screen and (min-width: 600px) {
+    .pagegridGAL{
+        height: 290vh !important;
+    }
+    #imgguy {
+        max-width: 568px;
+        max-height: 378px;
+    }
+    #imgduo {
+        max-width: 580px;
+        max-height: 375px;
+    }
+    #vid2 {
+        display: inline;
+    }
+    .vid12 {
+        width: 570px;
+        height: 350px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .pagegridGAL{
+        height: 150vh !important;
+    }
+    .galmain {
+        grid-template-rows: .10fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:"titleg titleg"
+                            "img vid"
+                            "img vid";
+    }
+    .vid12 {
+        width: 470px;
+        height: 320px;
+    }
+    #imgguy {
+        max-width: 520px;
+        max-height: 330px;
+    }
+    #imgduo {
+        max-width: 528px;
+        max-height: 323px;
+        margin-top: 13px;
+    }
+    .galvid {
+        justify-content: flex-start;
+        text-align: center;
+    }
+    #vid2 {
+        margin-top: 15px;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .pagegridGAL{
+        height: 145vh !important;
+    }
+}
+@media screen and (min-width: 1280px) {
+    .pagegridGAL{
+        height: 130vh !important;
+    }
+}

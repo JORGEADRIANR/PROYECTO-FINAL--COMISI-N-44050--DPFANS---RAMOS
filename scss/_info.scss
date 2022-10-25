@@ -1,0 +1,110 @@
+@import "./color";
+@import "./class";
+@import "./mixins";
+// BODY
+.pagegridINF {
+    @extend .basicbody;
+    height: 120vh !important;
+    grid-template-rows: .15fr 1fr 1fr .15fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas:"header header header header"
+                        "main main main main"
+                        "main main main main"
+                        "footer footer footer footer";
+    row-gap: .7em;
+    column-gap: .7em;
+}
+// MAIN
+.infmain {
+    @extend .basicmain;
+    display: grid;
+    grid-template-rows: .10fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:"titleinf titleinf"
+                        "inftext inftext"
+                        "inftext inftext";
+    row-gap: .4em;
+    column-gap: .4em;
+    color: map-get($color,"white");
+}
+#titleinf {
+    grid-area: titleinf;
+    background-color: map-get($color,"gray");
+    text-align: center;
+}
+#textinf {
+    grid-area: inftext;
+    background-color: map-get($color,"gray");
+    display: grid;
+    text-align: center;
+    #infotitle {
+        margin: 0;
+        padding: 0;
+    }
+}
+#twpersonalINF {
+    display: none;
+}
+
+// MEDIA QUERIES MOBILE FIRST
+
+@media screen and (min-width: 600px) {
+    .pagegridINF {
+        height: 100vh !important;
+    }
+}
+@media screen and (min-width: 768px) {
+    .pagegridINF {
+        height: 170vh !important;
+    }
+    .infmain {
+        grid-template-areas:"titleinf titleinf"
+                            "inftext inftext"
+                            "twinf twinf";
+    }
+    #textinf {
+        p {
+            margin: 0 25px 0 25px;
+        }
+    }
+    #twpersonalINF {
+        grid-area: twinf;
+        background-color: map-get($color,"gray");
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        #fotoinf {
+            max-width: 440px !important;
+            max-height: 503px !important;
+            opacity: 70% !important;
+            border: 2px solid map-get($color,"white");
+            align-self: center;
+        }
+        #twlinkinf {
+            display: flex;
+            flex-direction: column;
+            align-self: center;
+            a {
+                align-self: center;
+            }
+        }
+        #twpersinf {
+            @include anim;
+        }
+    }
+}
+@media screen and (min-width: 1024px) {
+    .pagegridINF {
+        height: 125vh !important;
+    }
+    .infmain {
+        grid-template-areas:"titleinf titleinf"
+                            "inftext twinf"
+                            "inftext twinf";
+    }
+}
+@media screen and (min-width: 1280px) {
+    .pagegridINF {
+        height: 112vh !important;
+    }
+}

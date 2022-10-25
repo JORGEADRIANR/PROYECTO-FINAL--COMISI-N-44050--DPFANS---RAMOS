@@ -1,0 +1,344 @@
+@import "./color";
+@import "./mixins";
+// BODY
+#indexgrid {
+    width: 100vw;
+    height: 240vh;
+    font-family: 'courierprime';
+    font-size: 18px;
+    color: map-get($color,"red");
+    background-color: map-get($color,"black");
+    display:grid;
+    grid-template-rows: .09fr 1fr 1fr .3fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:"header header"
+                        "main main"
+                        "main main"
+                        "footer footer";
+    row-gap: .7em;
+    column-gap: .7em;
+}
+// HEADER
+#indexhead {
+    grid-area: header;
+    background-color: map-get($color,"gray");
+    width: 100vw;
+}
+// HEADER ALTA RES
+.headeralta {
+    display: none;
+}
+// NAV HAMBURGESA GLOBAL
+.menubar a {
+    color: inherit;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    padding: 10px 20px;
+    border-top: 2px solid map-get($color,"black");
+    width: 100vw !important;
+    &:hover {
+        color: map-get($color,"aqua" );
+        background-color: map-get($color,"darkaqua");
+    }
+}
+.menubar input[type="checkbox"], .menubar .fa-bars, .menubar .fa-times {
+    position: absolute;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    right: initial;
+    left: 0;
+    top: 0;
+    width: 48px;
+    height: 48px;
+}
+.menubar .fa-bars, .menubar .fa-times {
+    font-size: 48px;
+    pointer-events: none;
+}
+.menubar input[type="checkbox"] {
+    opacity: 0;
+}
+.menubar {
+    color: map-get($color,"red");
+    display: flex;
+    text-align: center;
+    position: relative;
+    background: map-get($color,"gray");
+    min-height: initial;
+}
+.menubar nav {
+    display: none;
+}
+.menubar input:checked ~ nav {
+    display: block;
+}
+.menubar input:checked ~ .fa-bars {
+    display: none;
+}
+.menubar input:not(:checked) ~ .fa-times {
+    display: none;
+}
+.menubar input:checked ~ h2 {
+    display: none;
+}
+h2 {
+    color: map-get($color,"white");
+    margin-top: .5em;
+    margin-left: 3em;
+}
+// MAIN
+#indexmain {
+    grid-area: main;
+    display: grid;
+    grid-template-rows: .3fr .5fr 1fr .6fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:"textg textg"
+                        "sect1 sect1"
+                        "sect2 sect2"
+                        "sect3 sect3";
+    row-gap: .4em;
+    column-gap: .4em;
+}
+#textg {
+    grid-area: textg;
+    color: map-get($color, "white");
+    background-color: map-get($color,"gray");
+    display: flex;
+    justify-content: center;
+    strong {
+        align-self: center;
+    }
+}
+#sect1 {
+    grid-area: sect1;
+    color: map-get($color, "white");
+    background-color: map-get($color,"gray");
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    justify-content: space-around;
+    p {
+        align-self: center;
+    }
+}
+#sect2 {
+    grid-area: sect2;
+    background-color: map-get($color,"gray");
+}
+#sect3 {
+    grid-area: sect3;
+    color: map-get($color, "white");
+    background-color: map-get($color,"gray");
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    #officialpage {
+        align-self: center;
+    }
+    #spotylink {
+        background-color: map-get($color,"gray");
+    }
+    #aside1 {
+        display: none;
+    }
+}
+// FOOTER
+#indexfoot {
+    grid-area: footer;
+    background-color: map-get($color,"gray");
+    display: flex;
+    justify-content: space-around;
+    @include transform;
+    div {
+        align-self: center;
+    }
+    #backbutton {
+        background-color: map-get($color,"black");
+        border: 1.5px solid map-get($color,"darkred");
+        color: map-get($color,"white");
+        padding: .5em;
+    }
+}
+
+// MEDIA QUERIES MOBILE FIRST
+
+@media screen and (min-width: 335px) and (max-width: 406px) {
+    #indexgrid {
+        @include multicolor;
+    }
+    #sect3 {
+        #aside2 {
+            #spotylink {
+                height: 105%;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 600px) {
+    #indexgrid {
+        width: 100vw;
+        height: 210vh;
+        font-family: 'courierprime';
+        font-size: 18px;
+        color: map-get($color,"red");
+        background-color:map-get($color,"black");
+        display:grid;
+        grid-template-rows: .1fr 1fr 1fr .3fr;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:"header header"
+                            "main main"
+                            "main main"
+                            "footer footer";
+        row-gap: .7em;
+        column-gap: .7em;
+    }
+    #indexmain {
+        grid-template-rows: .2fr .3fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:"textg textg"
+                            "sect1 sect1"
+                            "sect2 sect3"
+                            "sect2 sect3";
+        #sect3 {
+            flex-direction: column;
+            #spotylink {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    #indexgrid {
+        width: 100vw;
+        height: 210vh;
+        font-family: 'courierprime';
+        font-size: 18px;
+        color: map-get($color,"white");
+        background-color:map-get($color,"black");
+        display:grid;
+        grid-template-rows: .3fr 1fr 1fr .2fr;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:"header header"
+                            "main main"
+                            "main main"
+                            "footer footer";
+        row-gap: .7em;
+        column-gap: .7em;
+    }
+    #indexhead {
+        display: none;
+    }
+    .headeralta {
+        grid-area:header;
+        background-color: map-get($color,"gray");
+        width: 100vw;
+        display: grid !important;
+        grid-template-rows: .5fr .5fr;
+        grid-template-areas:"titleh"
+                            "nav";
+        align-items: center;
+        justify-items: center;
+    }
+    #startitle {
+        grid-area: titleh;
+        background-color: map-get($color,"gray");
+        h1 {
+            margin: 0 !important;
+            padding: 0;
+            u {
+                margin: 0;
+                padding: 0;
+            }
+        }
+    }
+    #nav {
+        grid-area: nav;
+        nav {
+            ul {
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: space-evenly;
+                li {
+                    display: inline-block;
+                    margin: .5em;
+                    border: 4px solid map-get($color,"darkred");
+                    background-color: map-get($color,"red");
+                    @include multicolor;
+                    a {
+                        display: flex;
+                        width: 5em;
+                        height: 1.5em;
+                        justify-content: center;
+                        text-decoration: none;
+                        color:map-get($color,"black");
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    #indexgrid {
+        height: 180vh;
+    }
+    #indexmain {
+        grid-template-rows: .1fr .2fr 1fr 1fr;
+        grid-template-columns: .5fr 1fr;
+        grid-template-areas:"textg textg"
+                            "sect1 sect1"
+                            "sect2 sect3"
+                            "sect2 sect3";
+        #sect3 {
+            display: grid;
+            background-color: map-get($color,"black");
+            grid-template-rows: 2fr 1fr;
+            grid-template-columns: 1fr;
+            grid-template-areas:"news"
+                                "sites";
+            row-gap: .5em;
+            #aside1 {
+                grid-area: news;
+                background-color: map-get($color,"gray");
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                font-size: large;
+                text-align: justify;
+                strong {
+                    align-self: center;
+                }
+                p {
+                    margin: 0 30px 0 30px;
+                }
+            }
+            #aside2 {
+                grid-area: sites;
+                background-color: map-get($color,"gray");
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+            }
+            #spotylink {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+            }
+        }
+    }
+}
+@media screen and (min-width: 1280px) {
+    #indexgrid {
+        height: 160vh;
+    }
+    #indexmain {
+        grid-template-columns: .3fr 1fr;
+    }
+}

@@ -1,0 +1,123 @@
+@import "./color";
+@import "./class";
+@import "./mixins";
+// BODY
+.pagegrid {
+    @extend .basicbody;
+    height: 160vh !important;
+    grid-template-rows: .15fr 1fr 1fr .15fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas:"header header header header"
+                        "main main main main"
+                        "main main main main"
+                        "footer footer footer footer";
+    row-gap: .7em;
+    column-gap: .7em;
+}
+// HEADER
+.pagehead {
+    @extend .basichead;
+}
+// HEADER ALTA RES
+.headeralta {
+    display: none;
+}
+// MAIN
+.albmain {
+    @extend .basicmain;
+    display: grid;
+    grid-template-rows: .3fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:"albumtitle albumtitle"
+                        "homew homew"
+                        "discov discov"
+                        "humanaf humanaf"
+                        "ram ram";
+    row-gap: .4em;
+    column-gap: .4em;
+    @include multicolor;
+}
+.iframealb {
+    max-width: 90%;
+    max-height: 85%;
+    align-self: center;
+}
+#albumtitle {
+    grid-area: albumtitle;
+    background-color: map-get($color,"gray");
+    display: flex;
+    justify-content: center;
+    @include nomulticolor;
+    strong {
+        align-self: center;
+    }
+}
+#homew {
+    grid-area: homew;
+    background-color: map-get($color,"gray");
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    @include nomulticolor;
+}
+#discov {
+    grid-area: discov;
+    background-color: map-get($color,"gray");
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    @include nomulticolor;
+}
+#humanaf {
+    grid-area: humanaf;
+    background-color: map-get($color,"gray");
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    @include nomulticolor;
+}
+#ram {
+    grid-area: ram;
+    background-color: map-get($color,"gray");
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    @include nomulticolor;
+}
+// FOOTER
+.pagefoot {
+    @extend .basicfoot;
+    display: flex;
+    justify-content: space-around;
+    @include transform;
+    div {
+        align-self: center;
+    }
+}
+#backbutton {
+    background-color: map-get($color,"black");
+    border: 1.5px solid map-get($color,"darkred");
+    color: map-get($color,"white");
+    padding: .5em;
+}
+
+// MEDIA QUERIES MOBILE FIRST
+@media screen and (min-width: 600px) {
+    .pagegrid {
+        grid-template-rows: .15fr 1.5fr 1.5fr .15fr;
+    }
+    .iframealb {
+        max-height: 100%;
+        height: 100%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .pagehead {
+        display: none;
+    }
+}
